@@ -4,20 +4,21 @@ import Layout from "../layouts/Layout.astro";
 
 <Layout title="Hi! I'm Egi" description="Egi Nugraha Sumar's Web Portfolio">
   <main>
-    <div id="hero" class="mt-16">
+    <div id="hero" class="mt-16 ">
       <div
-        class="flex flex-col-reverse lg:flex-row w-full justify-between items-center gap-5"
+        class="flex flex-col-reverse lg:flex-row w-full justify-center items-center gap-5 lg:gap-16"
       >
         <div class="left">
-          <h1 class="text-4xl md:text-6xl lg:text-8xl font-bold">
+          <h1 class="text-4xl sm:text-6xl md:text-8xl font-bold">
             Hi, I'm <span class="text-[#FEBC39]">égi</span>
           </h1>
           <div class="highlight-text">
-            <h2>a <b>Freelance</b> <br /> <span class="animated"></span></h2>
+            <h2 class="text-lg lg:text-2xl">
+              a <span class="font-semibold text-xl md:text-4xl" id="animated"></span>
+            </h2>
           </div>
-          <br />
           <p>based in BDO, 🇮🇩 .</p>
-          <div class="meet">
+          <div class="mt-8 flex flex-col text-center justify-center items-center">
             <a href="#works">Get to know me! 👇</a>
             <svg width="198" height="45" viewBox="0 0 198 45" fill="none">
               <path
@@ -49,4 +50,38 @@ import Layout from "../layouts/Layout.astro";
       </div>
     </div>
   </main>
+  <script>
+    const typingtext: string[] = [
+      "Frontend Developer",
+      "UI/UX Designer",
+      "Copywriter",
+      "Tourism Enthusiast",
+    ];
+
+    const typingSpeed: number = 125; // Adjust the speed (in milliseconds) of typing here
+    let textIndex = 0;
+
+    function typeText(index: number, text: string) {
+      const element: HTMLElement | null = document.getElementById("animated");
+
+      if (index <= text.length) {
+        element!.textContent = text.slice(0, index);
+        setTimeout(() => typeText(index + 1, text), typingSpeed);
+      } else {
+        setTimeout(nextText, 1200); // Pause before moving to the next text
+      }
+    }
+
+    function nextText() {
+      if (textIndex < typingtext.length) {
+        typeText(0, typingtext[textIndex]);
+        textIndex++;
+      } else {
+        textIndex = 0; // Start over from the beginning
+        nextText();
+      }
+    }
+
+    nextText();
+  </script>
 </Layout>
