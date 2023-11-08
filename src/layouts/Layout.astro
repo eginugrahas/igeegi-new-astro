@@ -1,5 +1,6 @@
 ---
 import Header from "../components/Header.astro";
+import { ViewTransitions } from 'astro:transitions';
 
 interface Props {
   title: string;
@@ -27,10 +28,11 @@ const {
 	<link href="https://dev.iconly.io/public/SxpQFETPIo42/iconly.css" rel="stylesheet"/>
     <title>{title}</title>
   </head>
-  <body class="min-h-screen">
-    <Header />
-    <div class="px-24">
-      <slot />
+  <ViewTransitions/>
+  <body class="min-h-screen relative px-16 md:px-24 lg:px-24 flex flex-col justify-center items-center">
+    <div class="fixed top-2 w-full">
+      <Header />
     </div>
+    <slot />
   </body>
 </html>

@@ -13,7 +13,7 @@ h1, h2, h3, h4, h5, h6 {
 body {
   background:
     linear-gradient(90deg, white 21px, transparent 1%) center,
-    linear-gradient(white 21px, transparent 1%) center,
+    linear-gradient(white 21px, t ransparent 1%) center,
     #333333;
   background-size: 22px 22px;
 }

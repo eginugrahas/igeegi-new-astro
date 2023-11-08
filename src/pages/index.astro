@@ -1,87 +1,50 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import AnimatedText from "../components/AnimatedText";
 ---
 
 <Layout title="Hi! I'm Egi" description="Egi Nugraha Sumar's Web Portfolio">
   <main>
-    <div id="hero" class="mt-16 ">
+    <div id="hero" class="flex flex-col justify-center items-center w-full">
       <div
         class="flex flex-col-reverse lg:flex-row w-full justify-center items-center gap-5 lg:gap-16"
       >
-        <div class="left">
+        <div class="left w-full">
           <h1 class="text-4xl sm:text-6xl md:text-8xl font-bold">
-            Hi, I'm <span class="text-[#FEBC39]">égi</span>
+            Hi, I'm <span class="text-p-yellow">égi</span>
           </h1>
-          <div class="highlight-text">
-            <h2 class="text-lg lg:text-2xl">
-              a <span class="font-semibold text-xl md:text-4xl" id="animated"></span>
-            </h2>
-          </div>
-          <p>based in BDO, 🇮🇩 .</p>
-          <div class="mt-8 flex flex-col text-center justify-center items-center">
-            <a href="#works">Get to know me! 👇</a>
-            <svg width="198" height="45" viewBox="0 0 198 45" fill="none">
-              <path
-                id="hand-line"
-                d="M2 5.97524C63 0.764356 127.458 1.40091 191.567 3.77533C193.025 3.82931 194.5 3.81927 195.93 4.10532C196.294 4.1781 195.237 4.4047 194.867 4.43531C185.766 5.18848 176.63 5.43517 167.514 5.97525C155.454 6.68981 136.197 7.88895 123.883 8.83516C118.462 9.25165 112.689 8.56324 107.676 10.6684C106.477 11.1722 109.929 12.0621 111.196 12.355C114.117 13.03 120.053 13.8678 122.856 14.335C124.935 14.6815 137.068 15.7484 127.549 17.5615C120.181 18.965 109.923 18.8981 103.423 23.1347C100.65 24.9425 106.981 40.9553 107.676 42.7643"
-                stroke="#FEBC39"
-                stroke-width="3"
-                stroke-linecap="round"></path>
-            </svg>
-          </div>
+          <AnimatedText />
+          <p class="text-lg mt-5">based in BDO, &#127470;&#127465;.</p>
         </div>
         <div class="flex flex-col gap-3 items-center">
-          <img width={200} height={200} src="/pp-1.png" alt="egi" />
+          <img width={150} src="/pp-1.png" alt="egi" />
           <div class="hidden lg:flex gap-3">
             <a href="https://wa.me/6289503651196" target="_blank"
-              ><i class="icon-whatsapp-square text-4xl cursor-pointer"></i></a
+              ><i class="icon-whatsapp-square text-4xl cursor-pointer hover:text-p-yellow"></i></a
             >
             <a href="https://www.instagram.com/eginugrahas/" target="_blank">
-              <i class="icon-instagram-square text-4xl cursor-pointer"></i></a
+              <i class="icon-instagram-square text-4xl cursor-pointer hover:text-p-yellow"></i></a
             >
             <a href="https://www.linkedin.com/in/eginugrahas/" target="_blank"
-              ><i class="icon-linkedin text-4xl cursor-pointer"></i></a
+              ><i class="icon-linkedin text-4xl cursor-pointer hover:text-p-yellow"></i></a
             >
             <a href="https://www.github.com/eginugrahas/" target="_blank"
-              ><i class="icon-github-square text-4xl cursor-pointer"></i></a
+              ><i class="icon-github-square text-4xl cursor-pointer hover:text-p-yellow"></i></a
             >
           </div>
         </div>
       </div>
+      <div class="mt-8 flex flex-col text-center justify-center items-center">
+        <a href="/works/">Take a tour! 🚕</a>
+        <svg width="198" height="45" viewBox="0 0 198 45" fill="none">
+          <path
+            id="hand-line"
+            d="M2 5.97524C63 0.764356 127.458 1.40091 191.567 3.77533C193.025 3.82931 194.5 3.81927 195.93 4.10532C196.294 4.1781 195.237 4.4047 194.867 4.43531C185.766 5.18848 176.63 5.43517 167.514 5.97525C155.454 6.68981 136.197 7.88895 123.883 8.83516C118.462 9.25165 112.689 8.56324 107.676 10.6684C106.477 11.1722 109.929 12.0621 111.196 12.355C114.117 13.03 120.053 13.8678 122.856 14.335C124.935 14.6815 137.068 15.7484 127.549 17.5615C120.181 18.965 109.923 18.8981 103.423 23.1347C100.65 24.9425 106.981 40.9553 107.676 42.7643"
+            stroke="#FEBC39"
+            stroke-width="3"
+            stroke-linecap="round"></path>
+        </svg>
+      </div>
     </div>
   </main>
-  <script>
-    const typingtext: string[] = [
-      "Frontend Developer",
-      "UI/UX Designer",
-      "Copywriter",
-      "Tourism Enthusiast",
-    ];
-
-    const typingSpeed: number = 125; // Adjust the speed (in milliseconds) of typing here
-    let textIndex = 0;
-
-    function typeText(index: number, text: string) {
-      const element: HTMLElement | null = document.getElementById("animated");
-
-      if (index <= text.length) {
-        element!.textContent = text.slice(0, index);
-        setTimeout(() => typeText(index + 1, text), typingSpeed);
-      } else {
-        setTimeout(nextText, 1200); // Pause before moving to the next text
-      }
-    }
-
-    function nextText() {
-      if (textIndex < typingtext.length) {
-        typeText(0, typingtext[textIndex]);
-        textIndex++;
-      } else {
-        textIndex = 0; // Start over from the beginning
-        nextText();
-      }
-    }
-
-    nextText();
-  </script>
 </Layout>
